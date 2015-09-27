@@ -1,3 +1,3 @@
 <?php
-echo 'Branch Commit';
+echo 'Front Commit';
 ?>
