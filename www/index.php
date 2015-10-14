@@ -1,3 +1,5 @@
 <?php
-echo 'Test Commit';
-?>
+
+function __autoload($className) {
+    require_once('class/'.$className.'class.php');
+}

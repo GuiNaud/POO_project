@@ -1,11 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: guillaumerannaud
- * Date: 13/10/15
- * Time: 10:26
- */
 
-class Building {
+interface Building {
 
+    public function __construct(Town $town);
+    public function __destruct(Town $town);
+    public function upgrade(Town $town, $level);
+    public function damage(Town $town, $damageLevel);
+    public function action(Town $town);
 }
