@@ -13,8 +13,8 @@ class Church extends AbsCivil {
     public function __construct(Town $town) {
         parent::__construct($town);
         $this->setId(4);
-        $this->setName('Château');
-        $this->setPicture('../layout/img/castle.png');
+        $this->setName('Eglise');
+        $this->setPicture('../layout/img/church.png');
         $this->setLevel(1);
         $town->setGold(- (self::GOLD));
         $town->setStone(- (self::STONE));
@@ -41,7 +41,7 @@ class Church extends AbsCivil {
         parent::damage($town, $damageLevel);
         $town->setGold(- (self::GOLD * $damageLevel)/10);
         $town->setStone(- (self::STONE * $damageLevel)/10);
-        $town->setStone(- (self::WOOD * $damageLevel)/10);
+        $town->setWood(- (self::WOOD * $damageLevel)/10);
         $town->setPopulation(- (self::POP * $damageLevel)/10);
         $town->setPopulationMax(- (self::POP * $damageLevel)/10);
         $town->setProsperity(-2);

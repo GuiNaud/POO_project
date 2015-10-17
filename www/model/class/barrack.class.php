@@ -1,25 +1,27 @@
 <?php
 
-class Field extends AbsRessource {
+class Barrack extends AbsArmy {
 
-    const GOLD = 100;
-    const STONE = 100;
-    const WOOD = 100;
-    const POP = 100;
-    const BYTURNFOOD = 500;
+	const GOLD = 600;
+    const STONE = 200;
+    const WOOD = 400;
+    const POP = 200;
+    const BYTURNFOOD = -200;
+	const BYTURNARMY = 200;
+	const BYTURNWOOD = -50;
 
-
-    public function __construct(Town $town) {
+	public function __construct(Town $town) {
         parent::__construct($town);
-        $this->setId(8);
-        $this->setName('Champs');
-        $this->setPicture('../layout/img/field.png');
+        $this->setId(9);
+        $this->setName('Caserne');
+        $this->setPicture('../layout/img/barrack.png');
         $this->setLevel(1);
         $town->setGold(- (self::GOLD));
         $town->setStone(- (self::STONE));
         $town->setWood(- (self::WOOD));
-        $town->setPopulationActive(self::POP);
-        $town->setProsperity(1);
+        $town->setPopulation(self::POP);
+        $town->setPopulationMax(self::POP);
+        $town->setProsperity(2);
     }
 
     public function __toString() {
@@ -41,18 +43,21 @@ class Field extends AbsRessource {
         $town->setStone(- (self::STONE * $damageLevel)/10);
         $town->setWood(- (self::WOOD * $damageLevel)/10);
         $town->setPopulation(- (self::POP * $damageLevel)/10);
-        $town->setPopulationActive(- (self::POP * $damageLevel)/10);
-        $town->setProsperity(-1);
+        $town->setPopulationMax(- (self::POP * $damageLevel)/10);
     }
 
     public function action(Town $town) {
-        $town->setFOOD(self::BYTURNFOOD * $this->getLevel());
+        $town->setFood(self::BYTURNFOOD * $this->getLevel());
+        $town->setArmy(self::BYTURNARMY * $this->getLevel());
+        $town->setWood(self::BYTURNWOOD * $this->getLevel());
     }
 
     public function destroy(Town $town) {
-        $town->setPopulation(-self::POP);
-        $town->setPopulationActive(-self::POP);
-        $town->setProsperity(-1);
+        $town->setPopulation(- (self::POP));
+        $town->setPopulationMax(- (self::POP));
+        $town->setProsperity(-2);
         //retirer en bdd l'id et les coordonnées du batiment pour qu'il disparaisse
     }
 }
+
+?>
