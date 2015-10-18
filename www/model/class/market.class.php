@@ -25,10 +25,6 @@ class Market extends AbsCraft {
         $town->setProsperity(2);
     }
 
-    public function __toString() {
-        return 'Nom : '.$this->getName().', id : '.$this->getId().', level : '.$this->getLevel().'<br/>';
-    }
-
     public function upgrade(Town $town, $level) {
         parent::upgrade($town, $level);
         $this->setLevel($level);

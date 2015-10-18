@@ -12,6 +12,10 @@ abstract class AbsArmy implements IntBuilding {
         $town->setProsperity(1);
     }
 
+    public function __toString() {
+        return 'Nom : '.$this->getName().', id : '.$this->getId().', level : '.$this->getLevel().'<br/>';
+    }
+
     public function upgrade(Town $town, $level) {
         $town->setProsperity(1);
     }
