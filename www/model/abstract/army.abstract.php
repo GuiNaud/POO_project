@@ -6,6 +6,7 @@ abstract class AbsArmy implements IntBuilding {
     protected $name;
     protected $picture;
     protected $level;
+    protected $damageLevel; //from 100 to 0, 100 = the building works at 100%, 0 = at 0%
 
     public function __construct(Town $town) {
         $town->setProsperity(1);
@@ -17,6 +18,13 @@ abstract class AbsArmy implements IntBuilding {
 
     public function damage(Town $town, $damageLevel) {
         $town->setProsperity(-1);
+        $this->setDamageLevel($damageLevel);
+    }
+
+    public function fix(Town $town) {
+        //damage level is back to 100
+        $town->setProsperity(1);
+        $this->setDamageLevel(100);
     }
 
     public function action(Town $town) {}
@@ -47,6 +55,10 @@ abstract class AbsArmy implements IntBuilding {
         return $this->level;
     }
 
+    public function getDamageLevel(){
+        return $this->damageLevel;
+    }
+
     //Setters
     public function setId($id)
     {
@@ -68,4 +80,7 @@ abstract class AbsArmy implements IntBuilding {
         $this->level = $level;
     }
 
+    public function setDamageLevel($damageLevel){
+        $this->damageLevel = $damageLevel;
+    }
 }

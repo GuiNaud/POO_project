@@ -35,18 +35,9 @@ class Field extends AbsRessource {
         $town->setProsperity(1);
     }
 
-    public function damage(Town $town, $damageLevel) {
-        parent::damage($town, $damageLevel);
-        $town->setGold(- (self::GOLD * $damageLevel)/10);
-        $town->setStone(- (self::STONE * $damageLevel)/10);
-        $town->setWood(- (self::WOOD * $damageLevel)/10);
-        $town->setPopulation(- (self::POP * $damageLevel)/10);
-        $town->setPopulationActive(- (self::POP * $damageLevel)/10);
-        $town->setProsperity(-1);
-    }
 
     public function action(Town $town) {
-        $town->setFOOD(self::BYTURNFOOD * $this->getLevel());
+        $town->setFOOD(self::BYTURNFOOD * $this->getLevel() * $this->getDamageLevel()/100);
     }
 
     public function destroy(Town $town) {

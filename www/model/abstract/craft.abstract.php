@@ -16,14 +16,15 @@ abstract class AbsCraft implements IntBuilding {
         $town->setProsperity(1);
     }
 
-    //new
     public function damage(Town $town, $damageLevel) {
         $town->setProsperity(-1);
+        $this->setDamageLevel($damageLevel);
     }
 
-    //new
     public function fix(Town $town) {
+        //damage level is back to 100
         $town->setProsperity(1);
+        $this->setDamageLevel(100);
     }
 
     public function action(Town $town) {}
@@ -54,7 +55,6 @@ abstract class AbsCraft implements IntBuilding {
         return $this->level;
     }
 
-    //new
     public function getDamageLevel(){
         return $this->damageLevel;
     }
@@ -80,7 +80,6 @@ abstract class AbsCraft implements IntBuilding {
         $this->level = $level;
     }
 
-    //new
     public function setDamageLevel($damageLevel){
         $this->damageLevel = $damageLevel;
     }

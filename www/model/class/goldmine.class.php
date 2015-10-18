@@ -46,7 +46,7 @@ class GoldMine extends AbsRessource {
     }
 
     public function action(Town $town) {
-        $town->setGold(self::BYTURNGOLD * $this->getLevel());
+        $town->setGold(self::BYTURNGOLD * $this->getLevel() * $this->getDamageLevel()/100);
     }
 
     public function destroy(Town $town) {

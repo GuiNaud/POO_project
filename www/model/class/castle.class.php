@@ -38,20 +38,11 @@ class Castle extends AbsCivil {
         $town->setProsperity(2);
     }
 
-    public function damage(Town $town, $damageLevel) {
-        parent::damage($town, $damageLevel);
-        $town->setGold(- (self::GOLD * $damageLevel)/10);
-        $town->setStone(- (self::STONE * $damageLevel)/10);
-        $town->setWood(- (self::WOOD * $damageLevel)/10);
-        $town->setPopulation(- (self::POP * $damageLevel)/10);
-        $town->setPopulationMax(- (self::POP * $damageLevel)/10);
-        $town->setProsperity(-2);
-    }
 
     public function action(Town $town) {
-        $town->setFood(- (self::BYTURNFOOD * $this->getLevel()));
-        $town->setWood(- (self::BYTURNWOOD * $this->getLevel()));
-        $town->setArmy(self::BYTURNARMY * $this->getLevel());
+        $town->setFood(self::BYTURNFOOD * $this->getLevel() * $this->getDamageLevel()/100);
+        $town->setWood(self::BYTURNWOOD * $this->getLevel() * $this->getDamageLevel()/100);
+        $town->setArmy(self::BYTURNARMY * $this->getLevel() * $this->getDamageLevel()/100);
     }
 
     public function destroy(Town $town) {

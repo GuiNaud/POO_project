@@ -35,16 +35,6 @@ class StonePit extends AbsRessource {
         $town->setProsperity(1);
     }
 
-    public function damage(Town $town, $damageLevel) {
-        parent::damage($town, $damageLevel);
-        $town->setGold(- (self::GOLD * $damageLevel)/10);
-        $town->setStone(- (self::STONE * $damageLevel)/10);
-        $town->setWood(- (self::WOOD * $damageLevel)/10);
-        $town->setPopulation(- (self::POP * $damageLevel)/10);
-        $town->setPopulationActive(- (self::POP * $damageLevel)/10);
-        $town->setProsperity(-1);
-    }
-
     public function action(Town $town) {
         $town->setStone(self::BYTURNSTONE * $this->getLevel());
     }

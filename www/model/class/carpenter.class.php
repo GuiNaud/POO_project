@@ -36,18 +36,9 @@ class Carpenter extends AbsCraft {
         $town->setProsperity(1);
     }
 
-    public function damage(Town $town, $damageLevel) {
-        parent::damage($town, $damageLevel);
-        $town->setGold(- (self::GOLD * $damageLevel)/10);
-        $town->setStone(- (self::STONE * $damageLevel)/10);
-        $town->setWood(- (self::WOOD * $damageLevel)/10);
-        $town->setPopulation(- (self::POP * $damageLevel)/10);
-        $town->setPopulationMax(- (self::POP * $damageLevel)/10);
-    }
-
     public function action(Town $town) {
-        $town->setGold(self::BYTURNGOLD * $this->getLevel());
-        $town->setWood(self::BYTURNWOOD * $this->getLevel());
+        $town->setGold(self::BYTURNGOLD * $this->getLevel() * $this->getDamageLevel()/100);
+        $town->setWood(self::BYTURNWOOD * $this->getLevel() * $this->getDamageLevel()/100);
     }
 
     public function destroy(Town $town) {
