@@ -121,52 +121,52 @@ abstract class AbsTown
 
     public function setPopulation($population)
     {
-        $this->population = $population;
+        $this->population += $population;
     }
 
     public function setPopulationMax($populationMax)
     {
-        $this->populationMax = $populationMax;
+        $this->populationMax += $populationMax;
     }
 
     public function setPopulationActive($populationActive)
     {
-        $this->populationActive = $populationActive;
+        $this->populationActive += $populationActive;
     }
 
     public function setGold($gold)
     {
-        $this->gold = $gold;
+        $this->gold += $gold;
     }
 
     public function setWood($wood)
     {
-        $this->wood = $wood;
+        $this->wood += $wood;
     }
 
     public function setStone($stone)
     {
-        $this->stone = $stone;
+        $this->stone += $stone;
     }
 
     public function setFood($food)
     {
-        $this->food = $food;
+        $this->food += $food;
     }
 
     public function setProsperity($prosperity)
     {
-        $this->prosperity = $prosperity;
+        $this->prosperity += $prosperity;
     }
 
     public function setArmy($army)
     {
-        $this->army = $army;
+        $this->army += $army;
     }
 
     public function setMarket($market)
     {
-        $this->market = $market;
+        $this->market += $market;
     }
 
     // TOWN MAIN FUNCTIONS //
