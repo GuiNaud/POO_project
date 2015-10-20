@@ -9,7 +9,7 @@ abstract class AbsRessource implements IntBuilding {
     protected $level;
     protected $damageLevel; //from 100 to 0, 100 = the building works at 100%, 0 = at 0%
 
-    public function __construct(Town $town) {
+    public function __construct(AbsTown $town) {
         $town->setProsperity(1);
     }
 
@@ -17,24 +17,24 @@ abstract class AbsRessource implements IntBuilding {
         return 'Nom : '.$this->getName().', id : '.$this->getId().', level : '.$this->getLevel().'<br/>';
     }
 
-    public function upgrade(Town $town, $level) {
+    public function upgrade(AbsTown $town, $level) {
         $town->setProsperity(1);
     }
 
-    public function damage(Town $town, $damageLevel) {
+    public function damage(AbsTown $town, $damageLevel) {
         $town->setProsperity(-1);
         $this->setDamageLevel($damageLevel);
     }
 
-    public function fix(Town $town) {
+    public function fix(AbsTown $town) {
         //damage level is back to 100
         $town->setProsperity(1);
         $this->setDamageLevel(100);
     }
 
-    public function action(Town $town) {}
+    public function action(AbsTown $town) {}
 
-    public function destroy(Town $town) {
+    public function destroy(AbsTown $town) {
         $town->setProsperity(-1);
     }
 

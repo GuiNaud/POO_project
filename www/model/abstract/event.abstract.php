@@ -1,15 +1,15 @@
 <?php
 
 
-class AbsEvent implements IntEvent{
+class AbsEvent {
 
     protected $name;
     protected $message;
     protected $picture;
 
-    public function __construct(Town $town){}
+    public function __construct(AbsTown $town){}
 
-    public function action(Town $town){}
+    public function action(AbsTown $town){}
 
     //Getters
 
