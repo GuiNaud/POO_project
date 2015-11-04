@@ -9,6 +9,10 @@ class AbsEvent {
 
     public function __construct(AbsTown $town){}
 
+    public function __toString() {
+        return 'Nom : '.$this->getName().', message : '.$this->getMessage().'<br/>';
+    }
+
     public function action(AbsTown $town){}
 
     //Getters

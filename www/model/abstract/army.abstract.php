@@ -7,9 +7,13 @@ abstract class AbsArmy implements IntBuilding {
     protected $picture;
     protected $level;
     protected $damageLevel; //from 100 to 0, 100 = the building works at 100%, 0 = at 0%
+    protected $turnCreation;
 
     public function __construct(AbsTown $town) {
         $town->setProsperity(1);
+        $turn = ''; //appelle en bdd pour récupérer le tour actuel
+        if(!$turn)
+            $this->setTurnCreation($turn);
     }
 
     public function __toString() {
@@ -63,6 +67,11 @@ abstract class AbsArmy implements IntBuilding {
         return $this->damageLevel;
     }
 
+    public function getTurnCreation()
+    {
+        return $this->turnCreation;
+    }
+
     //Setters
     public function setId($id)
     {
@@ -86,5 +95,10 @@ abstract class AbsArmy implements IntBuilding {
 
     public function setDamageLevel($damageLevel){
         $this->damageLevel = $damageLevel;
+    }
+
+    public function setTurnCreation($turnCreation)
+    {
+        $this->turnCreation = $turnCreation;
     }
 }

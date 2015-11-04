@@ -3,23 +3,28 @@
 abstract class AbsTown
 {
     protected $name;
-    protected $level = 0;
-    protected $turn = 0;
-    protected $event = 0;
+    protected $level;
+    protected $turn;
+    protected $event;
     protected $zone = array();
-    protected $population = 0;
-    protected $populationMax = 0;
-    protected $populationActive = 0;
-    protected $gold = 100;
-    protected $wood = 20;
-    protected $stone = 20;
-    protected $food = 10;
-    protected $prosperity = 0;
-    protected $army = 0;
-    protected $market = 0;
+    protected $population;
+    protected $populationMax;
+    protected $populationActive;
+    protected $gold;
+    protected $wood;
+    protected $stone;
+    protected $food;
+    protected $prosperity;
+    protected $army;
+    protected $market;
+
+    public function __construct() {
+        $turn = ''; //appelle en bdd pour récupérer le tour actuel
+        $this->setTurn($turn);
+    }
 
     public function __toString() {
-        return 'Nom : '.$this->getName().'<br/>';
+        return 'Nom de la ville : '.$this->getName().'<br/>';
     }
 
     // GETTERS SETTERS //

@@ -28,4 +28,30 @@ function __autoload($className) {
 }
 
 $town = new CelticTown('Brest');
-echo $town->getName();
+echo $town.'<br>';
+
+$event = new TurnOne($town);
+$event->action($town);
+echo $event.'<br>';
+
+echo 'Or : '.$town->getGold().'<br>Minerais : '.$town->getStone().'<br>Bois : '.$town->getWood().'<br>Population : '
+    .$town->getPopulation().'<br>Population Max : '.$town->getPopulationMax().'<br>Population Active : '.$town->getPopulationActive().'<br><br>';
+
+$house = new House($town);
+echo $house.'<br>';
+
+echo 'Or : '.$town->getGold().'<br>Minerais : '.$town->getStone().'<br>Bois : '.$town->getWood().'<br>Population : '
+    .$town->getPopulation().'<br>Population Max : '.$town->getPopulationMax().'<br>Population Active : '.$town->getPopulationActive().'<br><br>';
+
+$goldmine = new GoldMine($town);
+echo $goldmine.'<br>';
+
+echo 'Or : '.$town->getGold().'<br>Minerais : '.$town->getStone().'<br>Bois : '.$town->getWood().'<br>Population : '
+    .$town->getPopulation().'<br>Population Max : '.$town->getPopulationMax().'<br>Population Active : '.$town->getPopulationActive().'<br><br>';
+
+$event2 = new TurnTwo($town);
+$event2->action($town);
+echo $event2.'<br>';
+
+echo 'Or : '.$town->getGold().'<br>Minerais : '.$town->getStone().'<br>Bois : '.$town->getWood().'<br>Population : '
+    .$town->getPopulation().'<br>Population Max : '.$town->getPopulationMax().'<br>Population Active : '.$town->getPopulationActive().'<br><br>';
