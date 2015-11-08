@@ -55,3 +55,28 @@ echo $event2.'<br>';
 
 echo 'Or : '.$town->getGold().'<br>Minerais : '.$town->getStone().'<br>Bois : '.$town->getWood().'<br>Population : '
     .$town->getPopulation().'<br>Population Max : '.$town->getPopulationMax().'<br>Population Active : '.$town->getPopulationActive().'<br><br>';
+
+?>
+
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Titre de la page</title>
+</head>
+<body>
+
+    <div class="getTown">TABLE TOWN</div>
+
+    <div class="getBuilding">TABLE BUILDING</div>
+
+    <div class="content">content</div>
+
+
+    <script src="http://localhost:8888/POO_project/www/bower_components/jquery/dist/jquery.js"></script>
+    <script src="http://localhost:8888/POO_project/www/layout/js/ajax.js"></script>
+
+</body>
+</html>
+
