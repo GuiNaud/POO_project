@@ -1,5 +1,6 @@
 <?php
 
+
 function __autoload($className) {
     $className = strtolower($className);
     if(preg_match('/int/', $className, $matches)) {
@@ -79,4 +80,5 @@ echo 'Or : '.$town->getGold().'<br>Minerais : '.$town->getStone().'<br>Bois : '.
 
 </body>
 </html>
+
 
