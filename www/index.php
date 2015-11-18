@@ -21,37 +21,15 @@ function __autoload($className) {
             require_once('model/class/craft/'.$className.'.class.php');
         } else if(preg_match('/(field)|(goldmine)|(lumbermill)|(stonepit)/', $className, $matches)) {
             require_once('model/class/ressource/'.$className.'.class.php');
-        } else {
+        } else if(preg_match('/(save)/', $className, $matches)) {
+            require_once('model/class/save/'.$className.'.class.php');
+        }else {
             require_once('model/class/event/'.$className.'.class.php');
         }
     }
 }
 
-$town = new CelticTown('Brest');
-echo $town.'<br>';
+$bat = new Save();
+$bat->select('SELECT * FROM buidings');
 
-$event = new TurnOne($town);
-$event->action($town);
-echo $event.'<br>';
 
-echo 'Or : '.$town->getGold().'<br>Minerais : '.$town->getStone().'<br>Bois : '.$town->getWood().'<br>Population : '
-    .$town->getPopulation().'<br>Population Max : '.$town->getPopulationMax().'<br>Population Active : '.$town->getPopulationActive().'<br><br>';
-
-$house = new House($town);
-echo $house.'<br>';
-
-echo 'Or : '.$town->getGold().'<br>Minerais : '.$town->getStone().'<br>Bois : '.$town->getWood().'<br>Population : '
-    .$town->getPopulation().'<br>Population Max : '.$town->getPopulationMax().'<br>Population Active : '.$town->getPopulationActive().'<br><br>';
-
-$goldmine = new GoldMine($town);
-echo $goldmine.'<br>';
-
-echo 'Or : '.$town->getGold().'<br>Minerais : '.$town->getStone().'<br>Bois : '.$town->getWood().'<br>Population : '
-    .$town->getPopulation().'<br>Population Max : '.$town->getPopulationMax().'<br>Population Active : '.$town->getPopulationActive().'<br><br>';
-
-$event2 = new TurnTwo($town);
-$event2->action($town);
-echo $event2.'<br>';
-
-echo 'Or : '.$town->getGold().'<br>Minerais : '.$town->getStone().'<br>Bois : '.$town->getWood().'<br>Population : '
-    .$town->getPopulation().'<br>Population Max : '.$town->getPopulationMax().'<br>Population Active : '.$town->getPopulationActive().'<br><br>';
