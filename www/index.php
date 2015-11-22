@@ -34,6 +34,20 @@ $query = $town->insert("INSERT INTO town (name, password, race) VALUES ('test1',
 
 print $query;
 
+?>
 
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Utopia</title>
+</head>
+<body>
+
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="layout/js/ajax.js"></script>
+
+</body>
+</html>
 
 
