@@ -29,7 +29,11 @@ function __autoload($className) {
     }
 }
 
-$bat = new Save();
-$bat->select('SELECT * FROM buidings');
+$town = new Save();
+$query = $town->insert("INSERT INTO town (name, password, race) VALUES ('test1', 'bla', 4)");
+
+print $query;
+
+
 
 

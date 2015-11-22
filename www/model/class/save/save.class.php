@@ -23,8 +23,7 @@ class Save {
             $query = $this->PDOInstance->prepare($request);
             $query->execute();
             if($query->errorCode() == '00000') {
-                $results = $query->fetchAll(PDO::FETCH_ASSOC);
-                return print_r($results);
+                return $query;
             } else {
                 return $query->errorCode();
             }
@@ -41,7 +40,7 @@ class Save {
             $query->execute();
             if($query->errorCode() != '00000') {
                 return $query->errorCode();
-            }
+            } else return true;
         }
         else {
             $this->PDOInstance->rollBack();
@@ -55,7 +54,7 @@ class Save {
             $query->execute();
             if($query->errorCode() != '00000') {
                 return $query->errorCode();
-            }
+            } else return true;
         }
         else {
             $this->PDOInstance->rollBack();
@@ -69,7 +68,7 @@ class Save {
             $query->execute();
             if($query->errorCode() != '00000') {
                 return $query->errorCode();
-            }
+            } else return true;
         }
         else {
             $this->PDOInstance->rollBack();
