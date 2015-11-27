@@ -30,7 +30,7 @@ function __autoload($className) {
 }
 
 $town = new Save();
-$query = $town->insert("INSERT INTO town (name, password, race) VALUES ('test1', 'bla', 4)");
+$query = $town->insert("INSERT INTO town (nom, password, race) VALUES ('test4', 'blou', 4)");
 
 print $query;
 
@@ -45,7 +45,7 @@ print $query;
 <body>
 
 <script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="layout/js/ajax.js"></script>
+<script src="controllers/ajax/ajax.js"></script>
 
 </body>
 </html>
