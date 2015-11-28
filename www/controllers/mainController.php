@@ -28,5 +28,9 @@ function __autoload($className) {
     }
 }
 
+/*$bat = new Save();
+$query = $bat->select("SELECT * from town WHERE nom ='test4' AND password='blou'");
+$result = $query->fetch();
+print_r($result);*/
 if($_POST["step"])
     require_once('form.php');

@@ -10,7 +10,8 @@ if($_POST["nom"] && $_POST["password"] && $_POST["race"]) {
     $nom = $_POST["nom"];
     $password = $_POST["password"];
     $newGame = new Save();
-    $query = $newGame->select("SELECT * from town WHERE nom = $nom AND password = $password");
-    print_r(json_encode($query));
+    $query = $newGame->select('SELECT * from town WHERE nom ="'.$nom.'" AND password = "'.$password.'"');
+    $result[] = $query->fetch();
+    return json_encode($result);
 }   else
        echo 'erreur';
