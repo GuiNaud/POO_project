@@ -1,40 +1,3 @@
-<?php
-
-function __autoload($className) {
-    $className = strtolower($className);
-    if(preg_match('/int/', $className, $matches)) {
-        $className = str_replace($matches, '', $className);
-        require_once('model/interface/'.$className.'.interface.php');
-    } else if(preg_match('/abs/', $className, $matches)) {
-        $className = str_replace($matches, '', $className);
-        require_once('model/abstract/'.$className.'.abstract.php');
-    } else {
-        if(preg_match('/(celtic)|(gallic)|(roman)|(viking)/', $className, $matches)) {
-            require_once('model/class/town/'.$className.'.class.php');
-        } else if(preg_match('/(academy)|(barrack)|(smithy)|(stable)/', $className, $matches)) {
-            require_once('model/class/army/'.$className.'.class.php');
-        } else if(preg_match('/(castle)|(church)|(cityhall)|(house)/', $className, $matches)) {
-            require_once('model/class/civil/'.$className.'.class.php');
-        } else if(preg_match('/(butchery)|(carpenter)|(market)|(tanner)/', $className, $matches)) {
-            require_once('model/class/craft/'.$className.'.class.php');
-        } else if(preg_match('/(butchery)|(carpenter)|(market)|(tanner)/', $className, $matches)) {
-            require_once('model/class/craft/'.$className.'.class.php');
-        } else if(preg_match('/(field)|(goldmine)|(lumbermill)|(stonepit)/', $className, $matches)) {
-            require_once('model/class/ressource/'.$className.'.class.php');
-        } else if(preg_match('/(save)/', $className, $matches)) {
-            require_once('model/class/save/'.$className.'.class.php');
-        }else {
-            require_once('model/class/event/'.$className.'.class.php');
-        }
-    }
-}
-
-$town = new Save();
-$query = $town->insert("INSERT INTO town (nom, password, race) VALUES ('test4', 'blou', 4)");
-
-print $query;
-
-?>
 
 <!doctype html>
 <html lang="fr">
@@ -44,8 +7,25 @@ print $query;
 </head>
 <body>
 
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="controllers/ajax/ajax.js"></script>
+<form class="formStart" method="post">
+    <label for="nom">Nom de la ville</label>
+    <input type="text" name="nom" id="nom" value=""/><br>
+    <label for="mdp">Mot de passe</label>
+    <input type="password" name="mdp" id="mdp" value=""/><br>
+    <label for="race">Civilisation</label>
+    <select name="race" id="race">
+        <option value=""></option>
+        <option value="celtic">Celte</option>
+        <option value="gallic">Gaëlique</option>
+        <option value="roman">Romaine</option>
+        <option value="Viking">Viking</option>
+    </select><br>
+    <button class="submitForm" type="submit">Envoyer</button>
+</form>
+
+
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="controllers/ajax/ajax.js"></script>
 
 </body>
 </html>
