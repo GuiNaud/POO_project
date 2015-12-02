@@ -15,10 +15,10 @@
     <label for="race">Civilisation</label>
     <select name="race" id="race">
         <option value=""></option>
-        <option value="celtic">Celte</option>
-        <option value="gallic">Gaëlique</option>
-        <option value="roman">Romaine</option>
-        <option value="Viking">Viking</option>
+        <option value="1">Celte</option>
+        <option value="2">Gaëlique</option>
+        <option value="3">Romaine</option>
+        <option value="4">Viking</option>
     </select><br>
     <button class="submitForm" type="submit">Envoyer</button>
 </form>

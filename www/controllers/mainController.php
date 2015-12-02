@@ -28,9 +28,9 @@ function __autoload($className) {
     }
 }
 
-/*$bat = new Save();
-$query = $bat->select("SELECT * from town WHERE nom ='test4' AND password='blou'");
-$result = $query->fetch();
-print_r($result);*/
-if($_POST["step"])
+if($_POST["step"] == 'start') {
+    $result = array();
     require_once('form.php');
+    if(!array_key_exists('error', $result)) require_once('getBuilding.php');
+    echo json_encode($result);
+}

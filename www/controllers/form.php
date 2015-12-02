@@ -1,22 +1,55 @@
 <?php
 if($_POST["nom"] && $_POST["password"] && $_POST["race"]) {//si race est envoyé => nouvelle partie
-    $newGame = new Save();
     $nom = $_POST["nom"];
     $password = $_POST["password"];
     $race = $_POST["race"];
-    //faire classe town et ensuite l'insert bdd
-    $query = $newGame->insert('INSERT INTO town (nom, password, race) VALUES ("'.$nom.'", "'.$password.'", "'.$race.'")');
-    //envoyer en json les parametres de la classe et pas le retour bdd, mais conditionné l'envoi si l'insert a été correctement fait
-    $result = $query->fetch();
+
+    switch ($race) {
+        case 1:
+            $town = new CelticTown($nom);
+            break;
+        case 2:
+            $town = new GallicTown($nom);
+            break;
+        case 3:
+            $town = new RomanTown($nom);
+            break;
+        case 4:
+            $town = new VikingTown($nom);
+            break;
+    }
+    $result["game"] = array (
+        "nom" => $town->getName(),
+        "level" => $town->getLevel(),
+        "turn" => $town->getTurn(),
+        "zone" => $town->getZone(),
+        "pop" => $town->getPopulation(),
+        "popmax" => $town->getPopulationMax(),
+        "popactive" => $town->getPopulationActive(),
+        "wood" => $town->getWood(),
+        "stone" => $town->getStone(),
+        "gold" => $town->getGold(),
+        "food" => $town->getFood(),
+        "army" => $town->getArmy(),
+        "prosp" => $town->getProsperity()
+    );
+    $newTown = new Save();
+    $query = $newTown->insert('INSERT INTO town VALUES("'.$result["game"]["nom"].'", "'.$password.'", "'.$race.'",
+        "'.$result["game"]["level"].'", "'.$result["game"]["turn"].'", "'.implode($result["game"]["zone"]).'",
+        "'.$result["game"]["pop"].'", "'.$result["game"]["popmax"].'", "'.$result["game"]["popactive"].'",
+        "'.$result["game"]["wood"].'", "'.$result["game"]["stone"].'", "'.$result["game"]["gold"].'",
+        "'.$result["game"]["food"].'", "'.$result["game"]["army"].'", "'.$result["game"]["prosp"].'")');
+
+    if(!$query) {
+        $result = array();
+        $result["error"] = 2;
+    }
 } else if($_POST["nom"] && $_POST["password"]){//si pas de race => chargement de partie
     $nom = $_POST["nom"];
     $password = $_POST["password"];
     $newGame = new Save();
     $query = $newGame->select('SELECT * from town WHERE nom ="'.$nom.'" AND password = "'.$password.'"');
-    $result = $query->fetch();
-    //créer la classe town pour l'envoyer en json ensuite
+    $result["game"] = $query->fetch(PDO::FETCH_ASSOC);
 } else {
-        $result["error"] = 1;
+    $result["error"] = 1;
 }
-
-//si il y un resultat en bdd on recupère aussi le contenu de la table building : on envoie caractéristique de town et la table building

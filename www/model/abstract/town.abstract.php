@@ -5,22 +5,34 @@ abstract class AbsTown
     protected $name;
     protected $level;
     protected $turn;
-    protected $event;
-    protected $zone = array();
+    protected $zone;
     protected $population;
     protected $populationMax;
     protected $populationActive;
-    protected $gold;
     protected $wood;
     protected $stone;
+    protected $gold;
     protected $food;
-    protected $prosperity;
     protected $army;
-    protected $market;
+    protected $prosperity;
 
-    public function __construct() {
-        $turn = ''; //appelle en bdd pour récupérer le tour actuel
-        $this->setTurn($turn);
+    public function __construct($name, $level = null, $turn = null, $zone = null, $pop = null, $popmax = null,
+                                $popactive = null, $wood = null, $stone = null, $gold = null, $food = null,
+                                $army = null, $prosp = null)
+    {
+        $this->name = $name;
+        $this->level = $level ? $level : 1;
+        $this->turn = $turn ? $turn : 1;
+        $this->zone = $zone ? $zone : $zone = array(0 => '1:1:1');
+        $this->population = $pop ? $pop : 100;
+        $this->populationMax = $popmax ? $popmax : 100;
+        $this->populationActive = $popactive ? $popactive : 0;
+        $this->wood = $wood ? $wood : 1000;
+        $this->stone = $stone ? $stone : 1000;
+        $this->gold = $gold ? $gold : 2000;
+        $this->food = $food ? $food : 1000;
+        $this->army = $army ? $army : 200;
+        $this->prosperity = $prosp ? $prosp : 20;
     }
 
     public function __toString() {
@@ -94,15 +106,6 @@ abstract class AbsTown
         return $this->army;
     }
 
-    public function getMarket()
-    {
-        return $this->market;
-    }
-
-    protected function getEvent()
-    {
-
-    }
 
     public function setName($name)
     {
@@ -167,11 +170,6 @@ abstract class AbsTown
     public function setArmy($army)
     {
         $this->army += $army;
-    }
-
-    public function setMarket($market)
-    {
-        $this->market += $market;
     }
 
     // TOWN MAIN FUNCTIONS //
