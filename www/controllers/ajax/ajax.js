@@ -17,7 +17,6 @@ $(".submitForm").on('click', function(e) {
         success: function(data) {
             console.log(JSON.stringify(data));
             $(".formStart").hide();
-            $('body').html('<p>'+ data +'</p>');
         },
         error : function(error, request) {
             console.log('erreur : ' + error + ' / request : ' + JSON.stringify(request));
