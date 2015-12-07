@@ -22,17 +22,11 @@ abstract class AbsTown
     {
         $this->name = $name;
         $this->level = $level ? $level : 1;
-        $this->turn = $turn ? $turn : 1;
-        $this->zone = $zone ? $zone : $zone = array(0 => '1:1:1');
+        $this->turn = $turn ? $turn : $this->getTurn() + 1;
+        $this->zone = $zone ? $zone : $zone = array(0 => '1:1:1:1');
         $this->population = $pop ? $pop : 100;
         $this->populationMax = $popmax ? $popmax : 100;
         $this->populationActive = $popactive ? $popactive : 0;
-        $this->wood = $wood ? $wood : 1000;
-        $this->stone = $stone ? $stone : 1000;
-        $this->gold = $gold ? $gold : 2000;
-        $this->food = $food ? $food : 1000;
-        $this->army = $army ? $army : 200;
-        $this->prosperity = $prosp ? $prosp : 20;
     }
 
     public function __toString() {
@@ -174,7 +168,7 @@ abstract class AbsTown
 
     // TOWN MAIN FUNCTIONS //
 
-    protected abstract function process();
+    protected abstract function processByTurn();
 
     protected function createBuilding($position, $type)
     {

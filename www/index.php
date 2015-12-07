@@ -23,6 +23,11 @@
     <button class="submitForm" type="submit">Envoyer</button>
 </form>
 
+<section class="container" style="display : none">
+    <p></p>
+    <button class="endTurn" type="submit">Fin du tour</button>
+</section>
+
 
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 <script type="text/javascript" src="controllers/ajax/ajax.js"></script>

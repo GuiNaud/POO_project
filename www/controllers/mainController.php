@@ -27,10 +27,17 @@ function __autoload($className) {
         }
     }
 }
-
-if($_POST["step"] == 'start') {
-    $result = array();
-    require_once('form.php');
-    if(!array_key_exists('error', $result)) require_once('getBuilding.php');
-    echo json_encode($result);
+$result = array();
+switch ($_POST["step"]) {
+    case 'start':
+        include_once('start.php');
+        break;
+    case 'turn':
+        include_once('turn.php');
+        break;
+    default :
+        echo "erreur : aucun argument envoyé";
+        break;
 }
+if(!array_key_exists('error', $result)) include_once('getBuilding.php');
+print json_encode($result);

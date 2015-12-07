@@ -10,18 +10,20 @@ class Church extends AbsCivil {
     const BYTURNWOOD = -50;
 
 
-    public function __construct(AbsTown $town) {
+    public function __construct(AbsTown $town, $flag = null) {
         parent::__construct($town);
         $this->setId(4);
         $this->setName('Eglise');
         $this->setPicture('../layout/img/church.png');
         $this->setLevel(1);
-        $town->setGold(- (self::GOLD));
-        $town->setStone(- (self::STONE));
-        $town->setWood(- (self::WOOD));
-        $town->setPopulation(self::POP);
-        $town->setPopulationMax(self::POP);
-        $town->setProsperity(2);
+        if(!$flag) {
+            $town->setGold(- (self::GOLD));
+            $town->setStone(- (self::STONE));
+            $town->setWood(- (self::WOOD));
+            $town->setPopulation(self::POP);
+            $town->setPopulationMax(self::POP);
+            $town->setProsperity(2);
+        }
     }
 
     public function upgrade(AbsTown $town, $level) {

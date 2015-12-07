@@ -9,18 +9,20 @@ class Academy extends AbsArmy {
     const BYTURNFOOD = -100;
 	const BYTURNARMY = 300;
 
-	public function __construct(AbsTown $town) {
+	public function __construct(AbsTown $town, $flag = null) {
         parent::__construct($town);
         $this->setId(11);
         $this->setName('Academie');
         $this->setPicture('../layout/img/academy.png');
         $this->setLevel(1);
-        $town->setGold(- (self::GOLD));
-        $town->setStone(- (self::STONE));
-        $town->setWood(- (self::WOOD));
-        $town->setPopulation(self::POP);
-        $town->setPopulationMax(self::POP);
-        $town->setProsperity(1);
+        if(!$flag) {
+            $town->setGold(- (self::GOLD));
+            $town->setStone(- (self::STONE));
+            $town->setWood(- (self::WOOD));
+            $town->setPopulation(self::POP);
+            $town->setPopulationMax(self::POP);
+            $town->setProsperity(1);
+        }
     }
 
     public function upgrade(AbsTown $town, $level) {

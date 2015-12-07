@@ -11,18 +11,20 @@ class Smithy extends AbsArmy {
     const BYTURNSTONE = -200;
 	const BYTURNWOOD = -100;
 
-	public function __construct(AbsTown $town) {
+	public function __construct(AbsTown $town, $flag = null) {
         parent::__construct($town);
         $this->setId(10);
         $this->setName('Forge');
         $this->setPicture('../layout/img/smithy.png');
         $this->setLevel(1);
-        $town->setGold(- (self::GOLD));
-        $town->setStone(- (self::STONE));
-        $town->setWood(- (self::WOOD));
-        $town->setPopulation(self::POP);
-        $town->setPopulationMax(self::POP);
-        $town->setProsperity(1);
+        if(!$flag) {
+            $town->setGold(- (self::GOLD));
+            $town->setStone(- (self::STONE));
+            $town->setWood(- (self::WOOD));
+            $town->setPopulation(self::POP);
+            $town->setPopulationMax(self::POP);
+            $town->setProsperity(1);
+        }
     }
 
     public function upgrade(AbsTown $town, $level) {

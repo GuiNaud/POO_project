@@ -10,18 +10,20 @@ class Barrack extends AbsArmy {
 	const BYTURNARMY = 200;
 	const BYTURNWOOD = -50;
 
-	public function __construct(AbsTown $town) {
+	public function __construct(AbsTown $town, $flag = null) {
         parent::__construct($town);
         $this->setId(9);
         $this->setName('Caserne');
         $this->setPicture('../layout/img/barrack.png');
         $this->setLevel(1);
-        $town->setGold(- (self::GOLD));
-        $town->setStone(- (self::STONE));
-        $town->setWood(- (self::WOOD));
-        $town->setPopulation(self::POP);
-        $town->setPopulationMax(self::POP);
-        $town->setProsperity(2);
+        if(!$flag) {
+            $town->setGold(- (self::GOLD));
+            $town->setStone(- (self::STONE));
+            $town->setWood(- (self::WOOD));
+            $town->setPopulation(self::POP);
+            $town->setPopulationMax(self::POP);
+            $town->setProsperity(2);
+        }
     }
 
     public function upgrade(AbsTown $town, $level) {

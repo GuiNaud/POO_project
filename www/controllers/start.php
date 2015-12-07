@@ -18,8 +18,17 @@ if($_POST["nom"] && $_POST["password"] && $_POST["race"]) {//si race est envoyé
             $town = new VikingTown($nom);
             break;
     }
+    $event = new TurnOne($town);
+    $event->action($town);
+    $result["event"] = array(
+        "nom" => $event->getName(),
+        "message" => $event->getMessage(),
+        "picture" => $event->getPicture()
+    );
+    $town->processByTurn();
     $result["game"] = array (
         "nom" => $town->getName(),
+        "race" => $race,
         "level" => $town->getLevel(),
         "turn" => $town->getTurn(),
         "zone" => $town->getZone(),
@@ -35,11 +44,10 @@ if($_POST["nom"] && $_POST["password"] && $_POST["race"]) {//si race est envoyé
     );
     $newTown = new Save();
     $query = $newTown->insert('INSERT INTO town VALUES("'.$result["game"]["nom"].'", "'.$password.'", "'.$race.'",
-        "'.$result["game"]["level"].'", "'.$result["game"]["turn"].'", "'.implode($result["game"]["zone"]).'",
+        "'.$result["game"]["level"].'", "'.$result["game"]["turn"].'", "'.implode($result["game"]["zone"]).';'.'",
         "'.$result["game"]["pop"].'", "'.$result["game"]["popmax"].'", "'.$result["game"]["popactive"].'",
         "'.$result["game"]["wood"].'", "'.$result["game"]["stone"].'", "'.$result["game"]["gold"].'",
         "'.$result["game"]["food"].'", "'.$result["game"]["army"].'", "'.$result["game"]["prosp"].'")');
-
     if(!$query) {
         $result = array();
         $result["error"] = 2;
@@ -48,8 +56,9 @@ if($_POST["nom"] && $_POST["password"] && $_POST["race"]) {//si race est envoyé
     $nom = $_POST["nom"];
     $password = $_POST["password"];
     $newGame = new Save();
-    $query = $newGame->select('SELECT * from town WHERE nom ="'.$nom.'" AND password = "'.$password.'"');
+    $query = $newGame->select('SELECT nom, race, level, turn, zone, pop, popmax, popactive, wood, stone, gold, food, army, prosp from town WHERE nom ="'.$nom.'" AND password = "'.$password.'"');
     $result["game"] = $query->fetch(PDO::FETCH_ASSOC);
+    $result["game"]["zone"] = explode(';', $result["game"]["zone"]);
 } else {
     $result["error"] = 1;
 }

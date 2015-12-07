@@ -10,18 +10,20 @@ class Tanner extends AbsCraft {
     const BYTURNFOOD = -75;
     const BYTURNWOOD = -30;
 
-	public function __construct(AbsTown $town) {
+	public function __construct(AbsTown $town, $flag = null) {
         parent::__construct($town);
         $this->setId(16);
         $this->setName('Tanneur');
         $this->setPicture('../layout/img/tanner.png');
         $this->setLevel(1);
-        $town->setGold(- (self::GOLD));
-        $town->setStone(- (self::STONE));
-        $town->setWood(- (self::WOOD));
-        $town->setPopulation(self::POP);
-        $town->setPopulationMax(self::POP);
-        $town->setProsperity(1);
+        if(!$flag) {
+            $town->setGold(- (self::GOLD));
+            $town->setStone(- (self::STONE));
+            $town->setWood(- (self::WOOD));
+            $town->setPopulation(self::POP);
+            $town->setPopulationMax(self::POP);
+            $town->setProsperity(1);
+        }
     }
 
     public function upgrade(AbsTown $town, $level) {
