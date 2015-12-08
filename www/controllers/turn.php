@@ -1,4 +1,7 @@
 <?php
+$result = array();
+/*function qui créer un batiment suivant sa classe
+ * */
 function createBuilding($number, $town, $flag = null) {
     switch($number) {
         case 1 :
@@ -52,10 +55,11 @@ function createBuilding($number, $town, $flag = null) {
     }
     return $bat;
 }
-
-function randomizeEvent($town) {
-    $prosperity = $town->getProsperity();
-    switch($town->getTurn()) {
+/*function de generation d'evenement random
+ * */
+function randomizeEvent($town, $game) {
+    $prosperity = $game->prosp;
+    switch($game->turn) {
         case 1 :
             $town->setTurn(2);
             $event = new TurnTwo($town);
@@ -74,83 +78,118 @@ function randomizeEvent($town) {
                 case $random >= 11 && $random <= 20 :
                     $event = new Invasion($town);
                     break;
-                case $random >= 21 && $random <= 25 :
+                case $random >= 21 && $random <= 30 :
                     $event = new Desertion($town);
                     break;
-                case $random >= 26 && $random <= 30 :
+                case $random >= 31 && $random <= 40 :
                     $event = new Fire($town);
                     break;
-                case $random >= 31 && $random <= 35 :
+                case $random >= 41 && $random <= 50 :
                     $event = new Drought($town);
                     break;
-                case $random >= 36 && $random <= 40 :
+                case $random >= 51 && $random <= 60 :
                     $event = new Vintage($town);
                     break;
-                case $random >= 41 && $random <= 50 :
+                case $random >= 61 && $random <= 70 :
                     $event = new Party($town);
                     break;
-                case $random >= 51 && $random <= 60 :
-                    if($prosperity > 50) {
-                        $event = new War($town);
-                    } else randomizeEvent($town);
-                    break;
-                case $random >= 61 && $random <= 70 :
-                    if($prosperity > 55) {
-                        $event = new Migration($town);
-                    } else randomizeEvent($town);
-
-                    break;
-                case $random >= 71 && $random <= 80 :
+                case $random >= 76 && $random <= 80 :
                     if($prosperity > 65) {
-                        $event = new Business($town);
-                    } else randomizeEvent($town);
+                        $event = new War($town);
+                    } new Invasion($town);
                     break;
-                case $random >= 81 && $random <= 90 :
+                case $random >= 81 && $random <= 85 :
+                    if($prosperity > 70) {
+                        $event = new Migration($town);
+                    }
+                    break;
+                case $random >= 86 && $random <= 90 :
                     if($prosperity > 75) {
-                        $event = new Alliance($town);
-                    } else randomizeEvent($town);
+                        $event = new Business($town);
+                    } else new Vintage($town);
                     break;
-                case $random >= 91 && $random <= 100 :
+                case $random >= 91 && $random <= 95 :
                     if($prosperity > 85) {
-                        $event = new Utopia($town);
-                    } else randomizeEvent($town);
+                        $event = new Alliance($town);
+                    } else new Party($town);
                     break;
+                case $random >= 96 && $random <= 100 :
+                    if($prosperity > 90) {
+                        $event = new Utopia($town);
+                    } else new Vintage($town);
+                    break;
+                default :
+                    $event = new Nothing($town);
+                    break;
+
             }
 
     }
     return $event;
 }
-if($_POST["nom"] && $_POST["race"]) {
-    $nom = $_POST["nom"];
-    $race = $_POST["race"];
+// on dejsonne la data envoyé, et on stocke le tableau data["game"] dans l'objet $game
+$data = $_REQUEST;
+$game = json_decode($data["game"]);
+$action = $data["action"];
 
-    //on crée une classe town en fonctions des informatiosn en cours
+if($game->nom && $game->race) {
+    $nom = $game->nom;
+    $race = $game->race;
+
+    //on crée une classe town en fonctions des informatiosn de la partie
     switch ($race) {
         case 1:
-            $town = new CelticTown($nom);
+            $town = new CelticTown(
+                $nom,
+                $game->level,
+                $game->turn,
+                $game->zone,
+                $game->pop,
+                $game->popmax,
+                $game->popactive
+            );
             break;
         case 2:
-            $town = new GallicTown($nom);
+            $town = new GallicTown(
+                $nom,
+                $game->level,
+                $game->turn,
+                $game->zone,
+                $game->pop,
+                $game->popmax,
+                $game->popactive
+            );
             break;
         case 3:
-            $town = new RomanTown($nom);
+            $town = new RomanTown(
+                $nom,
+                $game->level,
+                $game->turn,
+                $game->zone,
+                $game->pop,
+                $game->popmax,
+                $game->popactive
+            );
             break;
         case 4:
-            $town = new VikingTown($nom);
+            $town = new VikingTown(
+                $nom,
+                $game->level,
+                $game->turn,
+                $game->zone,
+                $game->pop,
+                $game->popmax,
+                $game->popactive
+            );
             break;
     }
-    $game = json_decode($_POST["game"]);
-    $town->setTurn($game["turn"]);
-    $town->setZone($game["zone"]);
-    $town->setPopulation($game["pop"]);
-    $town->setPopulationMax($game["popmax"]);
-    $town->setPopulationActive($game["popactive"]);
-    $town->setWood($game["wood"]);
-    $town->setGold($game["gold"]);
-    $town->setStone($game["stone"]);
-    $town->setFood($game["food"]);
-    $town->setArmy($game["army"]);
-    $town->setProsperity($game["prosp"]);
+    $town->setWood($game->wood);
+    $town->setStone($game->stone);
+    $town->setGold($game->gold);
+    $town->setFood($game->food);
+    $town->setArmy($game->army);
+    $town->setProsperity($game->prosp);
+
 
     /* on recupére le tableau actions ou se trouvent les info sur chaque nouveau batiment créé
      * on crée chaque objet correspondant à ce batiment
@@ -159,52 +198,63 @@ if($_POST["nom"] && $_POST["race"]) {
      * seul les couts par tour seront déduits
      * pour vérifier que le batiment n'est pas été détruit, on vérifie son dernier numéro
     */
-    $action = json_decode($_POST["action"]);
-    foreach($action as $batToBuild) {
-        $batExplode = explode(":", $batToBuild);
-        if($batExplode[3] != 0) {
-            if(in_array($batToBuild, $game["zone"])) $newBat = createBuilding($batExplode[0], $town, 1);
-            else $newBat = createBuilding($batExplode[0], $town, 0);
-            if($batExplode[1] > 1) $newBat->upgrade($town, $batExplode[1]);
-            $newBat->action($town);
-        } else {
-            $batToDestroy = createBuilding($batExplode[0], $town, 1);
-            $batToDestroy->destroy($town);
-            unset($action[$batToBuild]);
+    if($action) {
+        foreach($action as $batToBuild) {
+            $batExplode = explode(":", $batToBuild);
+            if($batExplode[3] != 0) {
+                $zoneArray = explode(";", $game->zone);
+                if(in_array($batToBuild, $zoneArray)) {
+                    $newBat = createBuilding($batExplode[0], $town, 1);
+                }
+                else {
+                    $newBat = createBuilding($batExplode[0], $town, 0);
+                }
+                if($batExplode[1] > 1) $newBat->upgrade($town, $batExplode[1]);
+                $newBat->action($town);
+            } else {
+                $batToDestroy = createBuilding($batExplode[0], $town, 1);
+                $batToDestroy->destroy($town);
+                unset($action[$batToBuild]);
+            }
         }
     }
-    unset($game["zone"]);
+
+    //on reset l'objet $game
+    unset($game->zone);
     $town->setZone($action);
 
-    $newEvent = randomizeEvent($town);
-    $newEvent->action($town);
+    //on appelle un nouvel evenement
+    $newEvent = randomizeEvent($town, $game);
+    if($newEvent) {
+        $newEvent->action($town);
+    }
 
-
+    //on crée un objet Save pour update la partie en bdd
     $newTown = new Save();
-    $query = $newTown->update('UPDATE town SET level = "'.$result["game"]["level"].'", turn = "'.$result["game"]["turn"].'",
-        zone = "'.$result["game"]["zone"].'", pop = "'.$result["game"]["pop"].'", popmax = "'.$result["game"]["popmax"].'",
-        popactive = "'.$result["game"]["popactive"].'", wood = "'.$result["game"]["wood"].'", stone = "'.$result["game"]["stone"].'",
-        gold = "'.$result["game"]["gold"].'", food = "'.$result["game"]["food"].'", army = "'.$result["game"]["army"].'",
-        prosp = "'.$result["game"]["prosp"].'" WHERE nom = "'.$nom.'"');
-    if(!$query) {
-        $result = array();
+    $query = $newTown->update('UPDATE town SET level = "'.$town->getLevel().'", turn = "'.$town->getTurn().'",
+        zone = "'.implode(';', $town->getZone()).'", pop = "'.$town->getPopulation().'", popmax = "'.$town->getPopulationMax().'",
+        popactive = "'.$town->getPopulationActive().'", wood = "'.$town->getWood().'", stone = "'.$town->getStone().'",
+        gold = "'.$town->getGold().'", food = "'.$town->getFood().'", army = "'.$town->getFood().'",
+        prosp = "'.$town->getProsperity().'" WHERE nom = "'.$nom.'"');
+    if(!$query) { // si l'update abort
         $result["error"] = 2;
     } else {
-        if($town->getProsperity() == 100) {
+        if($town->getProsperity() == 100) { //si la propserité est à 100 : partie gagnée
             $result["final"] = "Victoire !";
-        } else {
-            $result["event"] = array(
-                "nom" => $event->getName(),
-                "message" => $event->getMessage(),
-                "picture" => $event->getPicture()
-            );
-
+        } else { //sinon on crée le tableau $result comprenant les tableaux $event si event il y a , et le tableau $game, contenant le sinfos de la partie
+            if($newEvent) {
+                $result["event"] = array(
+                    "nom" => $newEvent->getName(),
+                    "message" => $newEvent->getMessage(),
+                    "picture" => $newEvent->getPicture()
+                );
+            }
             $result["game"] = array (
                 "nom" => $town->getName(),
                 "race" => $race,
                 "level" => $town->getLevel(),
                 "turn" => $town->getTurn(),
-                "zone" => $town->getZone(),
+                "zone" => implode(';', $town->getZone()),
                 "pop" => $town->getPopulation(),
                 "popmax" => $town->getPopulationMax(),
                 "popactive" => $town->getPopulationActive(),
@@ -217,6 +267,6 @@ if($_POST["nom"] && $_POST["race"]) {
             );
         }
     }
-}else {
+}else { // si la partie n'existe pas en bdd
     $result["error"] = 1;
 }

@@ -39,5 +39,5 @@ switch ($_POST["step"]) {
         echo "erreur : aucun argument envoyé";
         break;
 }
-if(!array_key_exists('error', $result)) include_once('getBuilding.php');
+if(!array_key_exists('error', $result) && $_POST["step"] == 'start' ) include_once('getBuilding.php');
 print json_encode($result);

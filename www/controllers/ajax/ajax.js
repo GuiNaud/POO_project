@@ -32,15 +32,11 @@ $(".submitForm").on('click', function(e) {
         success: function(data) {
             data = JSON.parse(data);
             console.log(JSON.stringify(data));
-            localStorage.setItem('event', data.event);
-            var event = localStorage.getItem(JSON.stringify('event'));
-            localStorage.setItem('game', data.game);
-            var game = localStorage.getItem(JSON.stringify('game'));
-            localStorage.setItem('building', data.building);
-            var building = localStorage.getItem(JSON.stringify('building'));
+            if(data.event) localStorage.setItem('event', JSON.stringify(data.event));
+            if(data.game) localStorage.setItem('game', JSON.stringify(data.game));
+            if(data.building) localStorage.setItem('building', JSON.stringify(data.building));
             $(".formStart").hide();
             $('.container').show();
-            $('.container p').append(game+ '<br>' + event + '<br>' + building);
         },
         error : function(error, request) {
             console.log('erreur : ' + error + ' / request : ' + JSON.stringify(request));
@@ -48,17 +44,28 @@ $(".submitForm").on('click', function(e) {
     });
 });
 
+/*REQUETE AJAX PAR TOUR
+* @info step = turn pour signifier un changement de tour
+*       game = l'état de la partie au début du tour
+*       eventName = le nom du dernier evenement passé
+*       action = un objet JS avec les actions qui viennent d'etre efefctuer dans le tour précédent
+* @retour data =
+*               event : le nouvel evenement si il y a nouvel evenement
+*               game : la maj de la partie en cours
+*               building : infos sur les caractéristiques de chaque batiments pouvant être créer
+* */
 $(".endTurn").on('click', function(e) {
     e.preventDefault();
-    var game = JSON.stringify(localStorage.getItem('game'));
-    var event = JSON.stringify(localStorage.getItem('event'));
-    var action = ["1:1:1", "2:1:3", "6:1:8"];
+    var game = localStorage.getItem('game') || {};
+    var event = localStorage.getItem('event') || {};
+    var eventName = event != '' ? event.nom : '';
+    var action = localStorage.getItem('action') || {0 : '1:1:1:1'};
     var info = {
         step : "turn",
         game : game,
-        event : event.nom,
+        event : eventName,
         action : action
-    }
+    };
     console.log(JSON.stringify(info));
     $.ajax({
         type: "POST",
@@ -66,15 +73,14 @@ $(".endTurn").on('click', function(e) {
         url: '/controllers/mainController.php',
         data: info,
         success: function(data) {
-            data = JSON.parse(data);
             console.log(JSON.stringify(data));
-            localStorage.setItem('event', data.event);
-            var event = localStorage.getItem(JSON.stringify('event'));
-            localStorage.setItem('game', data.game);
-            var game = localStorage.getItem(JSON.stringify('game'));
-            var building = localStorage.getItem(JSON.stringify('building'));
+            data = JSON.parse(data);
+            if(data.event) localStorage.setItem('event', JSON.stringify(data.event));
+            if(data.game) localStorage.setItem('game', JSON.stringify(data.game));
+            if(data.building) localStorage.setItem('building', JSON.stringify(data.building));
+
             $('.container p').html('');
-            $('.container p').append(game+ '<br>' + event + '<br>' + building);
+            $('.container p').append(gameNew + '<br>' + eventNew + '<br>' + buildingNew);
         },
         error : function(error, request) {
             console.log('erreur : ' + error + ' / request : ' + JSON.stringify(request));
