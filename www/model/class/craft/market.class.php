@@ -11,18 +11,20 @@ class Market extends AbsCraft {
     const BYTURNSTONE = -150;
     const BYTURNWOOD = -150;
 
-	public function __construct(AbsTown $town) {
+	public function __construct(AbsTown $town, $flag = null) {
         parent::__construct($town);
         $this->setId(13);
         $this->setName('Marché');
         $this->setPicture('../layout/img/market.png');
         $this->setLevel(1);
-        $town->setGold(- (self::GOLD));
-        $town->setStone(- (self::STONE));
-        $town->setWood(- (self::WOOD));
-        $town->setPopulation(self::POP);
-        $town->setPopulationMax(self::POP);
-        $town->setProsperity(2);
+        if(!$flag) {
+            $town->setGold(- (self::GOLD));
+            $town->setStone(- (self::STONE));
+            $town->setWood(- (self::WOOD));
+            $town->setPopulation(self::POP);
+            $town->setPopulationMax(self::POP);
+            $town->setProsperity(2);
+        }
     }
 
     public function upgrade(AbsTown $town, $level) {

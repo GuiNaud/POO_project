@@ -10,18 +10,20 @@ class CityHall extends AbsCivil {
     const BYTURNGOLD = -300;
     const BYTURNWOOD = -50;
 
-    public function __construct(AbsTown $town) {
+    public function __construct(AbsTown $town, $flag = null) {
         parent::__construct($town);
         $this->setId(1);
         $this->setName('Hotel de ville');
         $this->setPicture('../layout/img/cityhall.png');
         $this->setLevel(1);
-        $town->setGold(- (self::GOLD));
-        $town->setStone(- (self::STONE));
-        $town->setWood(- (self::WOOD));
-        $town->setPopulation(self::POP);
-        $town->setPopulationMax(self::POP);
-        $town->setProsperity(1);
+        if(!$flag) {
+            $town->setGold(- (self::GOLD));
+            $town->setStone(- (self::STONE));
+            $town->setWood(- (self::WOOD));
+            $town->setPopulation(self::POP);
+            $town->setPopulationMax(self::POP);
+            $town->setProsperity(1);
+        }
     }
 
     public function upgrade(AbsTown $town, $level) {
@@ -38,7 +40,7 @@ class CityHall extends AbsCivil {
         $town->setWood(self::BYTURNWOOD * $this->getLevel() * $this->getDamageLevel()/100);
     }
 
-    public function destroy(Town $town) {
+    public function destroy(AbsTown $town) {
         $town->setPopulation(- (self::POP));
         $town->setPopulationMax(- (self::POP));
         $town->setProsperity(-4);

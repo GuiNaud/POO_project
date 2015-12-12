@@ -11,18 +11,20 @@ class Castle extends AbsCivil {
     const BYTURNARMY = 150;
 
 
-    public function __construct(AbsTown $town) {
+    public function __construct(AbsTown $town, $flag = null) {
         parent::__construct($town);
         $this->setId(2);
         $this->setName('Château');
         $this->setPicture('../layout/img/castle.png');
         $this->setLevel(1);
-        $town->setGold(- (self::GOLD));
-        $town->setStone(- (self::STONE));
-        $town->setWood(- (self::WOOD));
-        $town->setPopulation(self::POP);
-        $town->setPopulationMax(self::POP);
-        $town->setProsperity(4);
+        if(!$flag) {
+            $town->setGold(- (self::GOLD));
+            $town->setStone(- (self::STONE));
+            $town->setWood(- (self::WOOD));
+            $town->setPopulation(self::POP);
+            $town->setPopulationMax(self::POP);
+            $town->setProsperity(4);
+        }
     }
 
     public function upgrade(AbsTown $town, $level) {

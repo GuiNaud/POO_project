@@ -9,17 +9,19 @@ class Field extends AbsRessource {
     const BYTURNFOOD = 500;
 
 
-    public function __construct(AbsTown $town) {
+    public function __construct(AbsTown $town, $flag = null) {
         parent::__construct($town);
         $this->setId(8);
         $this->setName('Champs');
         $this->setPicture('../layout/img/field.png');
         $this->setLevel(1);
-        $town->setGold(- (self::GOLD));
-        $town->setStone(- (self::STONE));
-        $town->setWood(- (self::WOOD));
-        $town->setPopulationActive(self::POP);
-        $town->setProsperity(1);
+        if(!$flag) {
+            $town->setGold(- (self::GOLD));
+            $town->setStone(- (self::STONE));
+            $town->setWood(- (self::WOOD));
+            $town->setPopulationActive(self::POP);
+            $town->setProsperity(1);
+        }
     }
 
 

@@ -17,6 +17,7 @@ class TurnTwo extends AbsEvent{
     }
 
     public function action(AbsTown $town) {
+        $town->setTurn(2);
         $town->setGold(self::GOLD);
         $town->setWood(self::WOOD);
         $town->setStone(self::STONE);

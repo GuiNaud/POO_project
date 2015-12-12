@@ -1,17 +1,23 @@
 <?php
 
-class GalkicTown extends AbsTown
+class GallicTown extends AbsTown
 {
-    public function __construct($name)
+    public function __construct($name, $level = null, $turn = null, $zone = null, $pop = null, $popmax = null,
+                                $popactive = null, $wood = null, $stone = null, $gold = null, $food = null,
+                                $army = null, $prosp = null)
     {
-        $ratio = 0.2;
-        $this->name = $name;
-        $this->food = floor($this->food * (1-$ratio));
-        $this->wood = floor($this->wood * (1+$ratio));
+        parent::__construct($name, $level = null, $turn = null, $zone = null, $pop = null, $popmax = null,
+            $popactive = null, $wood = null, $stone = null, $gold = null, $food = null,
+            $army = null, $prosp = null);
     }
 
-    public function process()
-    {
-        //maths
+    public function processByTurn() {
+        $ratio = 0.2;
+        switch($this->getTurn()) {
+            case 1 :
+                $this->setArmy(floor($this->getArmy() + ($this->getArmy() * $ratio)));
+                $this->setWood(floor($this->getWood() - ($this->getWood() * $ratio)));
+                break;
+        }
     }
 }

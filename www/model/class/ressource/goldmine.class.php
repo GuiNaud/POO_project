@@ -9,17 +9,19 @@ class GoldMine extends AbsRessource {
     const BYTURNGOLD = 500;
 
 
-    public function __construct(AbsTown $town) {
+    public function __construct(AbsTown $town, $flag = null) {
         parent::__construct($town);
         $this->setId(5);
         $this->setName('Mine d\'or');
         $this->setPicture('../layout/img/goldmine.png');
         $this->setLevel(1);
-        $town->setGold(- (self::GOLD));
-        $town->setStone(- (self::STONE));
-        $town->setWood(- (self::WOOD));
-        $town->setPopulationActive(self::POP);
-        $town->setProsperity(4);
+        if(!$flag) {
+            $town->setGold(- (self::GOLD));
+            $town->setStone(- (self::STONE));
+            $town->setWood(- (self::WOOD));
+            $town->setPopulationActive(self::POP);
+            $town->setProsperity(4);
+        }
     }
 
     public function upgrade(AbsTown $town, $level) {

@@ -9,18 +9,20 @@ class Carpenter extends AbsCraft {
     const BYTURNGOLD = 250;
     const BYTURNWOOD = -125;
 
-	public function __construct(AbsTown $town) {
+	public function __construct(AbsTown $town, $flag = null) {
         parent::__construct($town);
         $this->setId(14);
         $this->setName('Charpentier');
         $this->setPicture('../layout/img/carpenter.png');
         $this->setLevel(1);
-        $town->setGold(- (self::GOLD));
-        $town->setStone(- (self::STONE));
-        $town->setWood(- (self::WOOD));
-        $town->setPopulation(self::POP);
-        $town->setPopulationMax(self::POP);
-        $town->setProsperity(1);
+        if(!$flag) {
+            $town->setGold(- (self::GOLD));
+            $town->setStone(- (self::STONE));
+            $town->setWood(- (self::WOOD));
+            $town->setPopulation(self::POP);
+            $town->setPopulationMax(self::POP);
+            $town->setProsperity(1);
+        }
     }
 
     public function upgrade(AbsTown $town, $level) {
