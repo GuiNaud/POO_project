@@ -3,9 +3,16 @@
 class Save {
 
     public $PDOInstance;
-    const DSN = 'mysql:dbname=utopia;host=127.0.0.1';
+    //guillaume
+    //const DSN = 'mysql:dbname=utopia;host=127.0.0.1';
+    //lea
+    const DSN = 'mysql:dbname=utopia;host=127.0.0.1;port=8889';
+
     const USER = 'root';
-    const PASSWORD = '';
+    const PASSWORD = 'root';
+
+
+    //mysql:host=$servername;port=8889;dbname=AppDatabase"
 
     public function __construct() {
 

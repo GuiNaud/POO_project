@@ -23,8 +23,9 @@ input{
     width: 200px;
     border-radius: 5px;
     border: none;
+    padding: 5px;
 }
-.submitForm{
+.submitForm, .endTurn{
 	background-color: #1A6D96;
     border: none;
     border-radius: 5px;
@@ -33,3 +34,37 @@ input{
     color: white;
     font-size: 1.2em;
 }
+
+.container{
+	color: white;
+}
+.info-town p{
+	color: white;
+	/*display: inline-block;*/
+}
+.info-town span{
+	color: #1A6D96;
+}
+.info-town .row{
+	margin-bottom: 20px;
+}
+.info-town p{
+	margin-bottom: 0px;
+	color: #C3C3C3;
+}
+.event{
+	color: #C3C3C3;
+}
+.header-game{
+	margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+

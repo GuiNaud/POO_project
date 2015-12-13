@@ -12,7 +12,7 @@ class TurnOne extends AbsEvent{
 
     public function __construct(AbsTown $town) {
         $this->setName('Bienvenue à '.$town->getName());
-        $this->setMessage('Quelques hommes et femmes se sont r&eacuteunis avec leurs familles, et ont cr&eacute&eacute une petite communaut&eacute<br>. À vous de la faire grandir et de la faire prosp&eacuterer.<br>Mais attention ! Le danger n\'est jamais loin...');
+        $this->setMessage('Quelques hommes et femmes se sont r&eacuteunis avec leurs familles, et ont cr&eacute&eacute une petite communaut&eacute.<br> À vous de la faire grandir et de la faire prosp&eacuterer.<br>Mais attention ! Le danger n\'est jamais loin...');
         $this->setPicture('../layout/img/start.png');
 
     }

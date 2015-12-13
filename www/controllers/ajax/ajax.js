@@ -30,12 +30,36 @@ $(".submitForm").on('click', function(e) {
         url: '/GitHub/POO_project/www/controllers/mainController.php',
         data: info,
         success: function(data) {
+            //console.log(JSON.stringify(data));
             data = JSON.parse(data);
             console.log(JSON.stringify(data));
             if(data.event) localStorage.setItem('event', JSON.stringify(data.event));
             if(data.game) localStorage.setItem('game', JSON.stringify(data.game));
             if(data.building) localStorage.setItem('building', JSON.stringify(data.building));
-            $(".formStart").hide();
+            $(".game-form").hide();
+            $(".header").hide();
+            $(".header-game").show();
+
+            //echo event
+            $("#name-event").text(data.event.nom);
+            $("#message-event").html(data.event.message);
+
+            //echo info town
+            $("#name-town").text(data.game.nom);
+            $("#race").text(data.game.race);
+            $("#level").text(data.game.level);
+            $("#turn").text(data.game.turn);
+            $("#zone").text(data.game.zone);
+            $("#pop").text(data.game.pop);
+            $("#popmax").text(data.game.popmax);
+            $("#popactive").text(data.game.popactive);
+            $("#wood").text(data.game.wood);
+            $("#stone").text(data.game.stone);
+            $("#gold").text(data.game.gold);
+            $("#food").text(data.game.food);
+            $("#army").text(data.game.army);
+            $("#prosp").text(data.game.prosp);
+
             $('.container').show();
         },
         error : function(error, request) {
