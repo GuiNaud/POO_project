@@ -117,8 +117,103 @@
             <p id="message-event" class="text-center"></p>
         </div>
 
-        <p id="result"></p>
-        <button class="endTurn" type="submit">Fin du tour</button>
+        <div class="town">
+            <table id="town-zone">
+                <tr>
+                    <td class="zone" id="zone1">
+                        <select name="batiment" id="1">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                    <td class="zone" id="zone2">
+                        <select name="batiment" id="2">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                    <td class="zone" id="zone3">
+                        <select name="batiment" id="3">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                    <td class="zone" id="zone4">
+                        <select name="batiment" id="4">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="zone" id="zone5">
+                        <select name="batiment" id="5">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                    <td class="zone" id="zone6">
+                        <select name="batiment" id="6">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                    <td class="zone" id="zone7">
+                        <select name="batiment" id="7">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                    <td class="zone" id="zone8">
+                        <select name="batiment" id="8">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="zone" id="zone9">
+                        <select name="batiment" id="9">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                    <td class="zone" id="zone10">
+                        <select name="batiment" id="10">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                    <td class="zone" id="zone11">
+                        <select name="batiment" id="11">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                    <td class="zone" id="zone12">
+                        <select name="batiment" id="12">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="zone" id="zone13">
+                        <select name="batiment" id="13">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                    <td class="zone" id="zone14">
+                        <select name="batiment" id="14">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                    <td class="zone" id="zone15">
+                        <select name="batiment" id="15">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                    <td class="zone" id="zone16">
+                        <select name="batiment" id="16">
+                            <option value=""></option><option value="1">Hotel de ville</option><option value="2">Château</option><option value="3">Maisons</option><option value="4">Eglise</option><option value="5">Mine d'or</option><option value="6">Scierie</option><option value="7">Carrière</option><option value="8">Champs</option><option value="9">Caserne</option><option value="10">Forge</option><option value="11">Académie</option><option value="12">Etable</option><option value="13">Marché</option><option value="14">Charpentier</option><option value="15">Boucherie</option><option value="16">Tanneur</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="result-class text-center">
+            <p id="result"></p>
+            <button class="endTurn" type="submit">Fin du tour</button>
+        </div> 
     </section>
 </section>
 
@@ -127,8 +222,8 @@
 
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 <script type="text/javascript" src="controllers/ajax/ajax.js"></script>
-
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="layout/js/script.js"></script>
 
 </body>
 </html>

@@ -103,8 +103,28 @@ $(".endTurn").on('click', function(e) {
             if(data.game) localStorage.setItem('game', JSON.stringify(data.game));
             if(data.building) localStorage.setItem('building', JSON.stringify(data.building));
 
-            $('.container p').html('');
-            $('.container p').append(gameNew + '<br>' + eventNew + '<br>' + buildingNew);
+            $('#result').html('');
+            $('#result').append(gameNew + '<br>' + eventNew + '<br>' + buildingNew);
+
+            //echo event
+            $("#name-event").text(data.event.nom);
+            $("#message-event").html(data.event.message);
+
+            //echo info town
+            $("#name-town").text(data.game.nom);
+            $("#race").text(data.game.race);
+            $("#level").text(data.game.level);
+            $("#turn").text(data.game.turn);
+            $("#zone").text(data.game.zone);
+            $("#pop").text(data.game.pop);
+            $("#popmax").text(data.game.popmax);
+            $("#popactive").text(data.game.popactive);
+            $("#wood").text(data.game.wood);
+            $("#stone").text(data.game.stone);
+            $("#gold").text(data.game.gold);
+            $("#food").text(data.game.food);
+            $("#army").text(data.game.army);
+            $("#prosp").text(data.game.prosp);
         },
         error : function(error, request) {
             console.log('erreur : ' + error + ' / request : ' + JSON.stringify(request));
