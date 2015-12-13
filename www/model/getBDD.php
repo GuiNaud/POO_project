@@ -2,7 +2,7 @@
 
 $serveur     = "localhost";
 $utilisateur = "root";
-$motDePasse  = "root";
+$motDePasse  = "";
 $base        = "Utopia";
 mysql_connect($serveur, $utilisateur, $motDePasse);
 mysql_select_db($base) or die("Base de données inactive. ");

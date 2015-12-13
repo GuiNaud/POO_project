@@ -1,0 +1,35 @@
+body{
+	background-color: #252525;
+}
+.header{
+	margin-top: 100px;
+	color: white;
+}
+.game-form{
+	margin-top: 50px;
+}
+table{
+	display: inline-block;
+}
+label{
+	color: #CACACA;
+}
+td{
+	padding: 10px;
+	text-align: left;
+}
+input{
+	height: 30px;
+    width: 200px;
+    border-radius: 5px;
+    border: none;
+}
+.submitForm{
+	background-color: #1A6D96;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 100px;
+    color: white;
+    font-size: 1.2em;
+}

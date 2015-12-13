@@ -27,7 +27,7 @@ $(".submitForm").on('click', function(e) {
     $.ajax({
         type: "post",
         datatype: "json",
-        url: '/controllers/mainController.php',
+        url: '/GitHub/POO_project/www/controllers/mainController.php',
         data: info,
         success: function(data) {
             data = JSON.parse(data);
