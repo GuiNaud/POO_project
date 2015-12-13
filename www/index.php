@@ -56,20 +56,12 @@
                     <span id="name-town"></span>
                 </div>
                 <div class="col-xs-1">
-                    <p>Race</p>
-                    <span id="race"></span>
-                </div>
-                <div class="col-xs-1">
                     <p>Niveau</p>
                     <span id="level"></span>
                 </div>
                 <div class="col-xs-1">
                     <p>Tour</p>
                     <span id="turn"></span>
-                </div>
-                <div class="col-xs-1">
-                    <p>Zone</p>
-                    <span id="zone"></span>
                 </div>
             </div>
             <div class="row">
